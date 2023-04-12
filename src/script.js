@@ -22,20 +22,20 @@
       let currentElement = descendents[i],
           totalChildren = currentElement.childElementCount;
 
-      let user = document.querySelector("#chatconversation > div:nth-child(" + (i + 1) + ") > div:nth-child(1) > div > div > div > div.display-name").innerText;
+      let user = currentElement.querySelector("div.display-name").innerText;
 
       for (let j = 1; j <= totalChildren; ++j) {
           
-          let query = "#chatconversation > div:nth-child(" + (i + 1) + ") > div:nth-child(" + j + ") > div > div > div > div.usermessage";
+          let query = "div.usermessage";
           
-          let userMessage = document.querySelector(query).innerText;
+          let userMessage = currentElement.querySelector(query).innerText;
           
           let stringEntry = user + ": " + userMessage;
           jitsiChat.push(stringEntry);
       }
   }
 
-  let meetName = document.querySelector("#videoconference_page div.subject-text").innerText;
+  let meetName = document.querySelector("#videoconference_page div.subject-text--content").innerText;
 
   let finalFileName = meetName + ".txt";
 
