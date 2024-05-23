@@ -20,7 +20,7 @@ Why?
 
 -   Go to [src/script.js](src/script.js) and click on `raw`.
 -   Copy the script as it is and paste it in the console of the Jitsi Meet.
--   Your script will be downloaded and saved in `Meet_Name.txt` format.
+-   Your script will be downloaded and saved in `Meet_Name.md` format.
 
 ## Future Scope?
 
