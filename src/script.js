@@ -9,37 +9,11 @@
       chatToggleBtn.click();
   }
 
-  let chatContainer = document.querySelector("#chatconversation");
-
-  // remote or local groups - to get direct children
-  let descendents = chatContainer.getElementsByClassName('chat-message-group');
-
-  // array of strings
-  let jitsiChat = [];
-
-  for (let i = 0; i < descendents.length; ++i) {
-
-      let currentElement = descendents[i],
-          totalChildren = currentElement.childElementCount;
-
-      let user = currentElement.querySelector("div.display-name").innerText;
-
-      for (let j = 1; j <= totalChildren; ++j) {
-          
-          let query = "div.usermessage";
-          
-          let userMessage = currentElement.querySelector(query).innerText;
-          
-          let stringEntry = user + ": " + userMessage;
-          jitsiChat.push(stringEntry);
-      }
-  }
-
   let meetName = document.querySelector("#videoconference_page div.subject-text--content").innerText;
 
-  let finalFileName = meetName + ".txt";
+  let finalFileName = meetName + ".md";
 
-  let finalChat = jitsiChat.join("\r\n");
+  let finalChat = "## Chat Transcript\n\n```txt\n" + Array.from(document.querySelector("#chatconversation").querySelectorAll("div.usermessage")).map(um => um.closest('.chatmessage').parentElement.querySelector('.timestamp').innerText + " " + um.innerText).join("\n\n") + "\n```";
 
   /* *
    * Downloads the final data in a .txt format.
